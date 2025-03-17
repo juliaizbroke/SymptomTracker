@@ -24,7 +24,7 @@ if st.button("Predict"):
         predicted_disease = label_encoder.inverse_transform(model.predict(symptoms_transformed))[0]
         
         # Get top 3 probable diseases
-        probabilities = model.decision_function(symptoms_transformed)
+        probabilities = model.predict_proba(symptoms_transformed)
         top_3_indices = np.argsort(probabilities, axis=1)[:, -3:]
         top_3_diseases = label_encoder.inverse_transform(top_3_indices[0])
 
